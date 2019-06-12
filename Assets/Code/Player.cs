@@ -6,10 +6,10 @@ public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform trans;
-    public Rigidbody2D body;
+    public Rigidbody2D body2D;
 
-    public float walkingSpeed;
-    public float jumpSpeed;
+    public float wSpeed;
+    public float jSpeed;
 
     private void Awake()
     {
@@ -23,24 +23,41 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        { // x-axis movement
-            body.velocity += jumpSpeed * Vector2.up;
-        }
-        { // x-axis movement
-            var v = body.velocity;
-            var speed = 0f;
+    { 
+        { 
+            var variable = body2D.velocity;
+            var Hspeed = 0f;
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                speed += -walkingSpeed;
+                Hspeed += -wSpeed;
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                speed += walkingSpeed;
+                Hspeed += wSpeed;
             }
-            v.x = speed;
-            body.velocity = v;
+            variable.x = Hspeed;
+            body2D.velocity = variable;
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            body2D.velocity += jSpeed * Vector2.up;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D colisionar)
+    {
+        var newObject = colisionar.collider.gameObject;
+        if (newObject.tag == "Gem")
+        {
+            var scala = this.transform.localScale;
+            scala.y *=2.5f ;
+            this.transform.localScale = scala;
+            newObject.SetActive(false);
+        }
+        else if(newObject.tag == "Bonsai")
+        {
+            var scala2 = this.transform.localScale;
+            scala2.y /= 1.1f;
+            this.transform.localScale = scala2;
         }
     }
 
