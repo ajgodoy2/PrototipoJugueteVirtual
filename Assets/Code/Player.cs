@@ -49,15 +49,21 @@ public class Player : MonoBehaviour
         if (newObject.tag == "Gem")
         {
             var scala = this.transform.localScale;
-            scala.y *=2.5f ;
-            this.transform.localScale = scala;
+            if (scala.y < 0.7f)
+            {
+                scala.y *= 1.5f;
+                this.transform.localScale = scala;
+            }
             newObject.SetActive(false);
         }
         else if(newObject.tag == "Bonsai")
         {
             var scala2 = this.transform.localScale;
-            scala2.y /= 1.1f;
-            this.transform.localScale = scala2;
+            if (scala2.y > 0.30f)
+            {
+                scala2.y /= 1.1f;
+                this.transform.localScale = scala2;
+            }
         }
     }
 
