@@ -1100,8 +1100,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360920144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.98, y: 3.18, z: 14.630859}
-  m_LocalScale: {x: 0.13732105, y: 0.17434023, z: 1}
+  m_LocalPosition: {x: 4.067, y: 3.024, z: 14.630859}
+  m_LocalScale: {x: 0.17123935, y: 0.23553364, z: 1}
   m_Children: []
   m_Father: {fileID: 1099594673}
   m_RootOrder: 0
@@ -2854,7 +2854,6 @@ GameObject:
   - component: {fileID: 684446593}
   - component: {fileID: 684446594}
   - component: {fileID: 684446595}
-  - component: {fileID: 684446596}
   m_Layer: 0
   m_Name: diamond (1)
   m_TagString: Gem
@@ -2925,32 +2924,6 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &684446595
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684446592}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
---- !u!61 &684446596
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5373,7 +5346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292523565}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.93, y: 3.05, z: 14.630859}
+  m_LocalPosition: {x: 9.58, y: 3.05, z: 14.630859}
   m_LocalScale: {x: 0.15895255, y: 0.18528613, z: 1}
   m_Children: []
   m_Father: {fileID: 1099594673}
@@ -5782,7 +5755,6 @@ GameObject:
   - component: {fileID: 1403733208}
   - component: {fileID: 1403733211}
   - component: {fileID: 1403733210}
-  - component: {fileID: 1403733209}
   m_Layer: 0
   m_Name: diamond (4)
   m_TagString: Gem
@@ -5804,32 +5776,6 @@ Transform:
   m_Father: {fileID: 1099594673}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1403733209
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403733207}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
 --- !u!61 &1403733210
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7969,8 +7915,8 @@ GameObject:
   - component: {fileID: 2018874903}
   - component: {fileID: 2018874906}
   - component: {fileID: 2018874905}
-  - component: {fileID: 2018874907}
   - component: {fileID: 2018874904}
+  - component: {fileID: 2018874907}
   m_Layer: 0
   m_Name: Mago
   m_TagString: Untagged
@@ -8096,7 +8042,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2018874902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79d1f09985aa808468325962138ca83e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f74ef9ed27429949857c7f146988b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   trans: {fileID: 0}

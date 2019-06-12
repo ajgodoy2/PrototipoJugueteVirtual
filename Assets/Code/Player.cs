@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     // Start is called before the first frame update
     public Transform trans;
     public Rigidbody2D body2D;
