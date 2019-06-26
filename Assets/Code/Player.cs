@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     // Start is called before the first frame update
     public Transform trans;
     public Rigidbody2D body2D;
-
-    public float wSpeed;
-    public float jSpeed;
+    public float speed;
 
     private void Awake()
     {
+        body2D = this.GetComponent<Rigidbody2D>();
         trans = this.transform;
     }
 
@@ -24,24 +22,26 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        { 
-            var variable = body2D.velocity;
-            var Hspeed = 0f;
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                Hspeed += -wSpeed;
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                Hspeed += wSpeed;
-            }
-            variable.x = Hspeed;
-            body2D.velocity = variable;
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+    {
         {
-            body2D.velocity += jSpeed * Vector2.up;
+            var movimiento = Vector2.zero;
+            if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                movimiento += Vector2.down;
+            }
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                movimiento += Vector2.up;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                movimiento += Vector2.left;
+            }
+            if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                movimiento += Vector2.right;
+            }
+            body2D.velocity = speed * movimiento.normalized;
         }
     }
     private void OnCollisionEnter2D(Collision2D colisionar)
