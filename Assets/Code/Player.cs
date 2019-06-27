@@ -7,12 +7,16 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     public Transform trans;
     public Rigidbody2D body2D;
-    public float speed;
+    public float speedMovementX;
+    public float speedMovementY;
+    public Animator anim;
+
 
     private void Awake()
     {
         body2D = this.GetComponent<Rigidbody2D>();
         trans = this.transform;
+        anim = this.GetComponent<Animator>();
     }
 
     void Start()
@@ -33,15 +37,33 @@ public class Player : MonoBehaviour
             {
                 movimiento += Vector2.up;
             }
-            if (Input.GetKeyUp(KeyCode.LeftArrow))
+            body2D.velocity = speedMovementY * movimiento.normalized;
+        }
+        {
+            var v = body2D.velocity;
+            var speed = 0f;
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                movimiento += Vector2.left;
+                speed += -speedMovementX;
             }
-            if (Input.GetKeyUp(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                movimiento += Vector2.right;
+                speed += speedMovementX;
             }
-            body2D.velocity = speed * movimiento.normalized;
+            v.x = speed;
+            body2D.velocity = v;
+            { // Rotation around y-axis
+                if (speed > 0.01)
+                {
+                    trans.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (speed < -0.01)
+                {
+                    trans.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            anim.SetFloat("Speed", Mathf.Abs(speed));
+
         }
     }
     private void OnCollisionEnter2D(Collision2D colisionar)
