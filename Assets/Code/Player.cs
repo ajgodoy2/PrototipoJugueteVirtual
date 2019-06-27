@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float speedMovementX;
     public float speedMovementY;
     public Animator anim;
+    public GUIText text;
+    private int count;
 
 
     private void Awake()
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour
         body2D = this.GetComponent<Rigidbody2D>();
         trans = this.transform;
         anim = this.GetComponent<Animator>();
+        count = 0;
     }
 
     void Start()
@@ -78,6 +81,8 @@ public class Player : MonoBehaviour
                 this.transform.localScale = scala;
             }
             newObject.SetActive(false);
+            count++;
+            text.text = "Total de Gemas " + count  ;
         }
         else if(newObject.tag == "Bonsai")
         {
