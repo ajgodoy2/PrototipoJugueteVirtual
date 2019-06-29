@@ -12,6 +12,11 @@ public class Player : MonoBehaviour
     public Animator anim;
     public GUIText text;
     private int count;
+    public float spriteBlinkingTimer = 0.0f;
+    public float spriteBlinkingMiniDuration = 0.1f;
+    public float spriteBlinkingTotalTimer = 0.0f;
+    public float spriteBlinkingTotalDuration = 1.0f;
+    public bool startBlinking = false;
 
 
     private void Awake()
@@ -66,7 +71,33 @@ public class Player : MonoBehaviour
                 }
             }
             anim.SetFloat("Speed", Mathf.Abs(speed));
+        }
+        {
+            if (startBlinking == true)
+            {
+                spriteBlinkingTotalTimer += Time.deltaTime;
+                if (spriteBlinkingTotalTimer >= spriteBlinkingTotalDuration)
+                {
+                    startBlinking = false;
+                    spriteBlinkingTotalTimer = 0.0f;
+                    this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    return;
+                }
 
+                spriteBlinkingTimer += Time.deltaTime;
+                if (spriteBlinkingTimer >= spriteBlinkingMiniDuration)
+                {
+                    spriteBlinkingTimer = 0.0f;
+                    if (this.gameObject.GetComponent<SpriteRenderer>().enabled == true)
+                    {
+                        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    }
+                    else
+                    {
+                        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    }
+                }
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D colisionar)
@@ -83,14 +114,19 @@ public class Player : MonoBehaviour
             newObject.SetActive(false);
             count++;
             text.text = "Total de Gemas " + count  ;
+            if (count == 14)
+            {
+                text.text = "¡Has ganado recogiste todas las gemas!";
+            }
         }
-        else if(newObject.tag == "Bonsai")
+        else if(newObject.tag == "Obstacle")
         {
             var scala2 = this.transform.localScale;
             if (scala2.y > 0.30f)
             {
                 scala2.y /= 1.1f;
                 this.transform.localScale = scala2;
+                startBlinking = true;
             }
         }
     }
